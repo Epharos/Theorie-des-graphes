@@ -12,7 +12,6 @@ def erdosGallaiTheorem(d) :
 	r = somme(d, len(d))
 
 	if r % 2 != 0 :
-		print "stop 1"
 		return False
 
 	for k in range(1, len(d) + 1) :
@@ -22,7 +21,6 @@ def erdosGallaiTheorem(d) :
 			n += min(d[i - 1], k)
 
 		if not(somme(d, k) <= k * (k - 1) + n) :
-			print "stop 2 à k =", k
 			return False
 
 	return True
