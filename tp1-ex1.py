@@ -9,6 +9,20 @@
 from math import *
 
 def erdosGallaiTheorem(d) :
+	def somme(d, k) :
+		r = 0
+
+		for i in range(k) :
+			r += d[i]
+
+		return r
+
+	while 0 in d :
+		d.remove(0)
+
+	if max(d) >= len(d) :
+		return False
+
 	r = somme(d, len(d))
 
 	if r % 2 != 0 :
@@ -25,12 +39,4 @@ def erdosGallaiTheorem(d) :
 
 	return True
 
-def somme(d, k) :
-	r = 0
-
-	for i in range(k) :
-		r += d[i]
-
-	return r
-
-print erdosGallaiTheorem([1, 1, 1, 3])
+print erdosGallaiTheorem([0, 0, 1, 2, 3])
