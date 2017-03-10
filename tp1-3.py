@@ -6,13 +6,17 @@
 # Théorie des graphes
 # TP1 - Exercice 3
 
-def ParcoursProfondeur(G, s, i = 0, d = list(), H = {}) :
+def ParcoursProfondeur(G, s, d = list()) :
 	d.append(s)
-	H[s] = i
 
 	for n in G[s] :
 		if not(n in d) :
-			ParcoursProfondeur(G, n, i + 1, d, H)
+			ParcoursProfondeur(G, n, d)
+
+	H = {}
+
+	for i, v in enumerate(d) :
+		H[v] = i
 
 	return H
 
@@ -25,15 +29,6 @@ g['E'] = ['A', 'F']
 g['F'] = ['B', 'E']
 g['G'] = ['C']
 
-# g = {}
-# g['A'] = ['B', 'E']
-# g['B'] = ['A', 'D', 'F']
-# g['C'] = ['G']
-# g['D'] = ['B']
-# g['E'] = ['A', 'F']
-# g['F'] = ['B', 'E']
-# g['G'] = ['C']
-
 result = ParcoursProfondeur(g, 'E')
 
 if len(g) == len(result) :
@@ -43,5 +38,3 @@ else :
 
 for p in result.items() :
 		print "{} > {}".format(p[0], p[1])
-
-input()
